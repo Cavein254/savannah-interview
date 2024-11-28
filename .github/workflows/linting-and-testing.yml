@@ -18,7 +18,7 @@ jobs:
       - name: Validate commit messages
         uses: wagoid/commitlint-github-action@v6
         with:
-          configFile: frontend/commitlint.config.js
+          configFile: frontend/commitlint.config.mjs
 
   linting:
     runs-on: ubuntu-22.04

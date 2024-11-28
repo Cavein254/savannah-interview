@@ -1,2 +1,5 @@
+npm run lint:css
+npm run lint:ts
+
 npm link-stage
 npx lint-staged
