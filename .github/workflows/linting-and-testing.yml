@@ -11,10 +11,14 @@ jobs:
   commitMessages:
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       # Check commit messages
       - name: Validate commit messages
-        run: wagoid/commitlint-github-action@v6
-        working-directory: frontend
+        uses: wagoid/commitlint-github-action@v6
+        with:
+          configFile: frontend/commitlint.config.mjs
 
   linting:
     runs-on: ubuntu-22.04
