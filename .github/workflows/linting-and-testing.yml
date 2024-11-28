@@ -14,7 +14,7 @@ jobs:
       # Check commit messages
       - name: Validate commit messages
         run: wagoid/commitlint-github-action@v6
-        working-directory: ./frontend
+        working-directory: frontend
 
   linting:
     runs-on: ubuntu-22.04
@@ -27,21 +27,21 @@ jobs:
         with:
           node-version: "20.x"
           cache: "npm"
-          cache-dependency-path: ./frontend/package-lock.json
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./frontend
+        working-directory: frontend
 
       # Check css/less/scss
       - name: Validate css/less/scss
         run: npm run lint:css
-        working-directory: ./frontend
+        working-directory: frontend
 
       # Check typescript and javascript
       - name: Validate typescript and javascript
         run: npm run lint:ts
-        working-directory: ./frontend
+        working-directory: frontend
 
   test:
     runs-on: ubuntu-22.04
@@ -59,18 +59,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-          cache-dependency-path: ./frontend/package-lock.json
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./frontend
+        working-directory: frontend
 
         # Check if tests run OK
       - name: Run tests
         run: npm test
-        working-directory: ./frontend
+        working-directory: frontend
 
       # Build the project
       - name: Run build
         run: npm run build --if-present
-        working-directory: ./frontend
+        working-directory: frontend
