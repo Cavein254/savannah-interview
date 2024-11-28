@@ -10,12 +10,15 @@
     "lint:css": "stylelint '**/*.{css,less,scss}'",
     "lint:ts": "eslint '**/*.{ts,js}'",
     "preview": "vite preview",
-    "prepare": "husky",
+    "prepare": "husky && husky install",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write --ignore-unknown",
+    "*.js": "eslint --cache --fix",
+    "*.{css,less,scss}": "stylelint --fix",
+    "*.{js,css,md}": "prettier --write"
   },
   "eslintConfig": {
     "extends": [
