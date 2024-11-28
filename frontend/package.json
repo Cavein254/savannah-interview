@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:css": "stylelint '**/*.{css,less,scss}'",
+    "lint:ts": "eslint '**/*.{ts,js}'",
     "preview": "vite preview",
     "prepare": "husky"
   },
@@ -42,6 +44,9 @@
     "lint-staged": "^15.2.10",
     "postcss": "^8.4.49",
     "prettier": "3.4.1",
+    "stylelint": "^16.11.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-config-tailwindcss": "^0.0.7",
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.15.0",
