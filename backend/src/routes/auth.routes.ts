@@ -1,5 +1,5 @@
 import express from "express";
-import passport from "./passport";
+import passport from "../auth/passport";
 import prisma from "../lib/prisma";
 
 const authRouter = express.Router();
