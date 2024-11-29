@@ -14,7 +14,7 @@ import authRouter from "./routes/auth.routes";
 
 dotenv.config().parsed;
 const app = express();
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
@@ -23,7 +23,7 @@ app.use(
     cookie: {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     },
-    secret: process.env.SECRET, //openssl rand -base64 20
+    secret: process.env.SECRET as string, //openssl rand -base64 20
     resave: false,
     saveUninitialized: false,
     store: new PrismaSessionStore(new PrismaClient(), {

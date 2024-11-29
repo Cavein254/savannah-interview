@@ -31,7 +31,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
       callbackURL: process.env.GOOGLE_CALLBACK_URL as string,
     },
-    async (accessToken, refreshToken, profile, done) => {
+    async (accessToken: any, refreshToken: any, profile: any, done: any) => {
       const user = await prisma.user.upsert({
         where: {
           email: profile.emails![0].value,
@@ -40,7 +40,7 @@ passport.use(
         create: {
           email: profile.emails![0].value,
           name: profile.displayName,
-          avatar: profile.photos![0].value,
+          image: profile.photos![0].value,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

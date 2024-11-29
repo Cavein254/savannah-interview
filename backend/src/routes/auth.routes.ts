@@ -1,6 +1,6 @@
-import express from "express";
 import passport from "../auth/passport";
 import prisma from "../lib/prisma";
+import express, { Request, Response } from "express";
 
 const authRouter = express.Router();
 
@@ -26,26 +26,31 @@ authRouter.get(
     res.redirect(process.env.FRONTEND_REDIRECT_URL as string);
   }
 );
-
-authRouter.get("/api/user", async (req, res) => {
-  const userData = req.cookies.user;
+// @ts-ignore
+authRouter.get("/api/user", async (req: Request, res: Response) => {
+  const userData = req.cookies?.user;
   if (!userData) {
-    res.status(200).send(null);
-  } else {
-    try {
-      const data = await prisma.user.findUnique({
-        where: {
-          email: userData.email,
-        },
-      });
+    return res.status(200).send(null);
+  }
+
+  try {
+    const data = await prisma.user.findUnique({
+      where: {
+        email: userData.email,
+      },
+    });
+    if (data) {
       res.cookie("user", data);
       return res.status(200).json(data);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      return res.status(500).json({ error: "Internal Server Error" });
+    } else {
+      return res.status(404).json({ error: "User not found" });
     }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 authRouter.get("/logout", (req, res) => {
   res.clearCookie("user");
   req.session?.destroy((err) => {
