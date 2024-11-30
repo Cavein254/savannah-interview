@@ -71,4 +71,31 @@ apiRouter.get("/users_albums", async (req, res) => {
   }
 });
 
+apiRouter.get("/user/me", async (req, res) => {
+  const userData = req?.user;
+  console.log(userData);
+  if (!userData) {
+    res.status(200).send(null);
+  } else {
+    try {
+      const data = await prisma.user.findUnique({
+        where: {
+          id: userData.id,
+        },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          image: true,
+          username: true,
+        },
+      });
+      res.status(200).json(data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+});
+
 export default apiRouter;
