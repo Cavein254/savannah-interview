@@ -1,5 +1,5 @@
 const MDHeader = () => {
-  return <div className="sm:hidden">MDHeader</div>
+  return <div className="hidden md:flex">MDHeader</div>
 }
 
 export default MDHeader
