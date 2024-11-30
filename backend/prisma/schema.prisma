@@ -22,4 +22,21 @@ model User {
   emailVerified DateTime?
   image         String?
   newUser       Boolean   @default(true)
+
+  albums Album []
+}
+
+
+model Album {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId String?  @db.ObjectId
+  user User? @relation(fields: [userId], references: [id], onDelete:Cascade)
+  photos Photo[]
+}
+
+
+model Photo {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  albumId String?  @db.ObjectId
+  album Album? @relation(fields: [albumId], references: [id], onDelete:Cascade)
 }
