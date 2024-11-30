@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import passport from "passport";
@@ -37,10 +37,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).json({
+    success: true,
+    message: "Welcome to Savannah Interview API",
+  });
+});
 app.use("/", authRouter);
 
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`app listening on port ${PORT}`);
 });
