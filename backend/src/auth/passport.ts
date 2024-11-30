@@ -41,9 +41,8 @@ passport.use(
         create: {
           email: profile.emails![0].value,
           name: profile.displayName,
+          username: profile.displayName,
           image: profile.photos![0].value,
-          createdAt: new Date(),
-          updatedAt: new Date(),
         },
       });
       return done(null, user);

@@ -1,5 +1,11 @@
+import SMHome from "../components/home/SMHome"
+
 const HomePage = () => {
-  return <div>HomePage</div>
+  return (
+    <div>
+      <SMHome />
+    </div>
+  )
 }
 
 export default HomePage

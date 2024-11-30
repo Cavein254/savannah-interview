@@ -8,7 +8,7 @@ const RootLayout = () => {
       <nav>
         <Header />
       </nav>
-      <main>
+      <main className="min-h-[85%]">
         <Outlet />
       </main>
       <footer className="bottom-0">

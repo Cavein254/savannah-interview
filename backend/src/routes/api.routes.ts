@@ -51,4 +51,24 @@ apiRouter.get("/photos", async (req, res) => {
   }
 });
 
+apiRouter.get("/users_albums", async (req, res) => {
+  try {
+    const usersAlbums = await prisma.user.findMany({
+      include: {
+        albums: true,
+      },
+    });
+    res.status(200).send({
+      success: true,
+      data: usersAlbums,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(501).send({
+      success: false,
+      message: "Error! unable to complete request",
+    });
+  }
+});
+
 export default apiRouter;
