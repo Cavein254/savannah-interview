@@ -10,6 +10,7 @@ passport.serializeUser((user: any, done) => {
   done(null, {
     id: user.id,
     username: user.username,
+    name: user.name,
     image: user.avatar,
     email: user.email,
   });
@@ -33,19 +34,31 @@ passport.use(
       callbackURL: process.env.GOOGLE_CALLBACK_URL as string,
     },
     async (accessToken: any, refreshToken: any, profile: any, done: any) => {
-      const user = await prisma.user.upsert({
-        where: {
-          email: profile.emails![0].value,
-        },
-        update: {},
-        create: {
-          email: profile.emails![0].value,
-          name: profile.displayName,
-          username: profile.displayName,
-          image: profile.photos![0].value,
-        },
+      const existingUser = await prisma.user.findUnique({
+        where: { email: profile.emails![0].value },
       });
-      return done(null, user);
+
+      if (existingUser) {
+        const updateUser = await prisma.user.update({
+          where: { email: profile.emails![0].value },
+          data: {
+            username: existingUser.username
+              ? existingUser.username
+              : profile.displayName,
+          },
+        });
+        return done(null, updateUser);
+      } else {
+        const newUser = await prisma.user.create({
+          data: {
+            email: profile.emails![0].value,
+            name: profile.displayName,
+            username: profile.displayName,
+            image: profile.photos![0].value,
+          },
+        });
+        return done(null, newUser);
+      }
     }
   )
 );
