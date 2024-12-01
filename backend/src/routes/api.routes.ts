@@ -75,9 +75,32 @@ apiRouter.get("/users_albums", async (req, res) => {
   }
 });
 
+apiRouter.get("/album/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const album = await prisma.album.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        photos: true,
+      },
+    });
+    res.status(200).send({
+      success: true,
+      data: album,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(501).send({
+      success: false,
+      message: "Error! unable to complete request",
+    });
+  }
+});
+
 apiRouter.get("/user/me", async (req, res) => {
   const userData = req?.user;
-  console.log(userData);
   if (!userData) {
     res.status(200).send(null);
   } else {
