@@ -5,6 +5,7 @@ import HeaderDropdown from "../dropdown/HeaderDropdown"
 import { FaWheatAwn } from "react-icons/fa6"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { ModeToggle } from "../theme/mode-toggle"
+import SearchItem from "../search/SearchItem"
 
 const VITE_SERVER_LOGIN = import.meta.env.VITE_SERVER_LOGIN as string
 
@@ -13,7 +14,7 @@ interface SMHeaderProps {
 }
 const SMHeader = ({ user }: SMHeaderProps) => {
   return (
-    <div className="md:hidden flex justify-between">
+    <div className="fixed md:hidden flex justify-between w-full items-center px-4 py-4 bg-slate-100 border-b-2 border-b-slate-300 shadow-md dark:bg-slate-800 dark:border-b-slate-700">
       <div className="">
         <button>
           <RxHamburgerMenu size={24} />

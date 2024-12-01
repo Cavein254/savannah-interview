@@ -1,6 +1,8 @@
 import { useQueries } from "react-query"
 import { getAlbums, getUsers, getUsersAlbums } from "../services/api"
-import { User } from "../types"
+import { Album, User } from "../types"
+import SearchItem from "@/components/search/SearchItem"
+import AlbumCard from "@/components/card/AlbumCard"
 
 const UsersPage = () => {
   const results = useQueries([
@@ -13,9 +15,11 @@ const UsersPage = () => {
     return <div>Loading ...</div>
   if (users.error || albums.error || usersAlbums.error)
     return <div>An error occured...</div>
-
+  const listalbums = albums.data.map((album: Album) => (
+    <AlbumCard key={album.id} album={album} />
+  ))
   return (
-    <div>
+    <div className="mt-[25%]">
       {/* <h1>Users</h1>
       <ul>
         {users.data.map((user: User) => (
@@ -38,6 +42,8 @@ const UsersPage = () => {
           </li>
         ))}
       </ul> */}
+
+      <div className="flex flex-col gap-2">{listalbums}</div>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const getUsers = async () => {
   const response = await axios.get("/api/users")
-  return response.data.data
+  return response.data
 }
 
 export const getAlbums = async () => {
