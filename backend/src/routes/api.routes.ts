@@ -21,7 +21,11 @@ apiRouter.get("/users", async (req, res) => {
 
 apiRouter.get("/albums", async (req, res) => {
   try {
-    const albums = await prisma.album.findMany();
+    const albums = await prisma.album.findMany({
+      include: {
+        photos: true,
+      },
+    });
     res.status(200).send({
       success: true,
       data: albums,

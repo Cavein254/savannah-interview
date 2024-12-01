@@ -5,9 +5,8 @@ import { UserContext } from "@/context/usercontext"
 
 const Header = () => {
   const { user } = useContext(UserContext)
-  console.log(user)
   return (
-    <div className="w-full p-4">
+    <div className="w-full">
       <SMHeader user={user} />
       <MDHeader user={user} />
     </div>
