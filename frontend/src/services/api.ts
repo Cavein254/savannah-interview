@@ -19,3 +19,8 @@ export const getCurrentUser = async () => {
   const response = await axios.get("/api/user/me")
   return response.data
 }
+
+export const fetchAlbumById = async (id: string) => {
+  const response = await axios.get(`/api/album/${id}`)
+  return response.data.data
+}

@@ -1,7 +1,7 @@
+import AlbumCard from "@/components/card/AlbumCard"
 import { useQueries } from "react-query"
 import { getAlbums, getUsers, getUsersAlbums } from "../services/api"
-import { Album, User } from "../types"
-import AlbumCard from "@/components/card/AlbumCard"
+import { Album } from "../types"
 
 const AlbumsPage = () => {
   const results = useQueries([

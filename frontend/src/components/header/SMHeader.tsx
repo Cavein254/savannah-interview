@@ -1,11 +1,10 @@
 import { User } from "@/types"
+import { FaWheatAwn } from "react-icons/fa6"
 import { HiOutlineLockClosed } from "react-icons/hi2"
+import { RxHamburgerMenu } from "react-icons/rx"
 import { Link } from "react-router-dom"
 import HeaderDropdown from "../dropdown/HeaderDropdown"
-import { FaWheatAwn } from "react-icons/fa6"
-import { RxHamburgerMenu } from "react-icons/rx"
 import { ModeToggle } from "../theme/mode-toggle"
-import SearchItem from "../search/SearchItem"
 
 const VITE_SERVER_LOGIN = import.meta.env.VITE_SERVER_LOGIN as string
 
