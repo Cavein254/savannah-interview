@@ -1,5 +1,12 @@
+import BottomNav from "@/components/bottom/BottomNav"
+
 const PhotosPage = () => {
-  return <div>PhotosPage</div>
+  return (
+    <div>
+      {" "}
+      <BottomNav />
+    </div>
+  )
 }
 
 export default PhotosPage
