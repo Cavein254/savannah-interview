@@ -17,12 +17,11 @@ const AlbumDetails = () => {
   )
   if (isLoading) return <div>Loading ...</div>
   if (error) return <div>An error occured...</div>
-  console.log(data)
   const handleSetMainPhoto = (photo: Photo) => {
     setMainPhoto(photo.imageUrl)
   }
   const imageItem = data?.photos?.map((photo: Photo) => (
-    <div className="w-[150px]">
+    <div className="w-[150px]" key={photo.id}>
       <img
         src={photo.imageUrl}
         alt={photo.title}

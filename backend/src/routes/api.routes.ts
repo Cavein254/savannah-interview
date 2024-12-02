@@ -5,10 +5,38 @@ const apiRouter = express.Router();
 
 apiRouter.get("/users", async (req, res) => {
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      include: {
+        albums: true,
+      },
+    });
     res.status(200).send({
       success: true,
       data: users,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(501).send({
+      success: false,
+      message: "Error! unable to complete request",
+    });
+  }
+});
+
+apiRouter.get("/user/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        albums: true,
+      },
+    });
+    res.status(200).send({
+      success: true,
+      data: user,
     });
   } catch (err) {
     console.error(err);
