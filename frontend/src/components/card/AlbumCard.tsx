@@ -11,8 +11,8 @@ const AlbumCard = ({ album }: AlbumCardProps) => {
       <Card className="hover:shadow-lg hover:shadow-green-200 dark:hover:shadow-green-400">
         <CardContent className="p-0">
           <img
-            src={album.photos[0].imageUrl}
-            alt={album.photos[0].title}
+            src={album.photos?.[0]?.imageUrl || "placeholder.jpg"}
+            alt={album.photos?.[0]?.title || "No title"}
             className=""
           />
         </CardContent>

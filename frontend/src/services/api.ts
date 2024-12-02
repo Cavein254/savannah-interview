@@ -29,3 +29,21 @@ export const fetchUserById = async (id: string) => {
   const response = await axios.get(`/api/user/${id}`)
   return response.data.data
 }
+
+export const getAllPhotos = async () => {
+  const response = await axios.get("/api/photos")
+  return response.data.data
+}
+
+export const fetchPhotoById = async (id: string) => {
+  const response = await axios.get(`/api/photo/${id}`)
+  return response.data.data
+}
+
+export const changePhotoTitle = async (id: string, title: string) => {
+  const response = await axios.put(`/api/photo/`, {
+    title,
+    id,
+  })
+  return response.data.data
+}

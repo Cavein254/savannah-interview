@@ -23,6 +23,71 @@ apiRouter.get("/users", async (req, res) => {
   }
 });
 
+apiRouter.get("/photos", async (req, res) => {
+  try {
+    const photos = await prisma.photo.findMany();
+    res.status(200).send({
+      success: true,
+      data: photos,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(501).send({
+      success: false,
+      message: "Error! unable to complete request",
+    });
+  }
+});
+
+apiRouter.get("/photo/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const photo = await prisma.photo.findUnique({
+      where: { id },
+      include: {
+        album: true,
+      },
+    });
+    res.status(200).send({
+      success: true,
+      data: photo,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(501).send({
+      success: false,
+      message: "Error! unable to complete request",
+    });
+  }
+});
+
+apiRouter.put("/photo/", async (req, res) => {
+  const { id, title } = req.body;
+  if (!id || !title) {
+    res
+      .status(400)
+      .send({ success: false, message: "Missing photoId or Title" });
+  }
+  try {
+    const photo = await prisma.photo.update({
+      where: { id },
+      data: {
+        title,
+      },
+    });
+    res.status(200).send({
+      success: true,
+      data: photo,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(501).send({
+      success: false,
+      message: "Error! unable to complete request",
+    });
+  }
+});
+
 apiRouter.get("/user/me", async (req, res) => {
   const userData = req?.user;
   if (!userData) {
