@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import passport from "passport";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 /** database stuff **/
 import session from "express-session";
@@ -38,7 +39,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/api/", (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
     message: "Welcome to Savannah Interview API",
@@ -46,6 +47,12 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.use("/", authRouter);
 app.use("/api", apiRouter);
+
+app.use(express.static(path.join(__dirname, "../dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
 
 const PORT = process.env.PORT || 4000;
 

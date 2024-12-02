@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "build-front": "npm run build --prefix ../frontend"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
