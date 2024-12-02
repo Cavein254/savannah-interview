@@ -10,6 +10,15 @@ import { Toaster } from "@/components/ui/toaster"
 
 const queryClient = new QueryClient()
 
+import { datadogLogs } from "@datadog/browser-logs"
+
+datadogLogs.init({
+  clientToken: "YOUR_DATADOG_CLIENT_TOKEN",
+  site: "datadoghq.com",
+  forwardErrorsToLogs: true,
+  sessionSampleRate: 100,
+})
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
