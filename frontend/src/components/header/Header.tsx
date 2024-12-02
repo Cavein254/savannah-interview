@@ -7,9 +7,9 @@ import { ModeToggle } from "../theme/mode-toggle"
 import { UserContext } from "@/context/usercontext"
 import { useContext, useEffect, useState } from "react"
 import { AiOutlinePicture } from "react-icons/ai"
-import { IoHomeOutline } from "react-icons/io5"
 import { MdOutlineLibraryMusic } from "react-icons/md"
 import SearchItem from "../search/SearchItem"
+import { LuUser2 } from "react-icons/lu"
 
 const Header = () => {
   const { user } = useContext(UserContext)
@@ -41,7 +41,7 @@ const Header = () => {
           <button
             className={`${newPath === "users" ? "scale-125" : ""} bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30}`}
           >
-            <IoHomeOutline size={24} />
+            <LuUser2 size={24} />
           </button>
         </Link>
         <Link to="/albums">

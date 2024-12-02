@@ -1,6 +1,7 @@
-import { IoHomeOutline } from "react-icons/io5"
-import { MdOutlineLibraryMusic } from "react-icons/md"
 import { AiOutlinePicture } from "react-icons/ai"
+import { LuUser2 } from "react-icons/lu"
+import { MdOutlineLibraryMusic } from "react-icons/md"
+
 import { useNavigate } from "react-router-dom"
 const BottomNav = () => {
   const navigate = useNavigate()
@@ -17,7 +18,7 @@ const BottomNav = () => {
             className={`${path === "users" ? "scale-125" : ""} bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30}`}
             onClick={() => handleNavChange("users")}
           >
-            <IoHomeOutline size={24} />
+            <LuUser2 size={24} />
           </button>
           <button
             className={`${path === "albums" ? "scale-125" : ""} bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30}`}

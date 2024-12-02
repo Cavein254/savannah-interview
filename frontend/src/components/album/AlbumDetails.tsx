@@ -17,6 +17,7 @@ const AlbumDetails = () => {
   )
   if (isLoading) return <div>Loading ...</div>
   if (error) return <div>An error occured...</div>
+
   const handleSetMainPhoto = (photo: Photo) => {
     setMainPhoto(photo.imageUrl)
   }
