@@ -16,8 +16,8 @@ const UsersPage = () => {
     return <div>An error occured...</div>
 
   return (
-    <div className="mt-[25%]">
-      <div className="flex flex-col gap-2">
+    <div className="mt-[25%] md:mt-[10%]">
+      <div className="flex flex-col gap-2 md:px-4">
         <UserTable />
       </div>
       <BottomNav />
