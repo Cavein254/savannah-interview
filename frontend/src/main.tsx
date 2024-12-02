@@ -6,6 +6,7 @@ import { ThemeProvider } from "./components/theme/theme-provider.tsx"
 import router from "./router"
 import { QueryClient, QueryClientProvider } from "react-query"
 import UserProvider from "./context/usercontext.tsx"
+import { Toaster } from "@/components/ui/toaster"
 
 const queryClient = new QueryClient()
 
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")!).render(
       <UserProvider>
         <ThemeProvider>
           <RouterProvider router={router} />
+          <Toaster />
         </ThemeProvider>
       </UserProvider>
     </QueryClientProvider>

@@ -4,14 +4,14 @@ export type User = {
   username?: string
   email: string
   image?: string
-  albums?: Album
+  albums?: Album[]
 }
 
 export type Album = {
   id: string
   userId: string
   title: string
-  photos: Photo[]
+  photos?: Photo[]
 }
 
 export type UserAlbums = {
@@ -28,4 +28,5 @@ export type Photo = {
   albumId: string
   title: string
   imageUrl: string
+  album?: Album
 }

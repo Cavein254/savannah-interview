@@ -8,6 +8,7 @@ import PhotosPage from "./pages/Photo"
 import HomePage from "./pages/Home"
 import AlbumDetails from "./components/album/AlbumDetails"
 import UserDetails from "./components/user/UserDetails"
+import PhotoDetails from "./components/photo/PhotoDetails"
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/photos",
         element: <PhotosPage />,
+      },
+      {
+        path: "/photo/:id",
+        element: <PhotoDetails />,
       },
     ],
   },
