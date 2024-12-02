@@ -11,7 +11,7 @@ const BottomNav = () => {
     return navigate(`/${path}`, { replace: false })
   }
   return (
-    <nav className="bottom-12 fixed  flex justify-center w-full items-center opacity-75 hover:opacity-100">
+    <nav className="md:hidden bottom-12 fixed  flex justify-center w-full items-center opacity-75 hover:opacity-100">
       <div className="dark:bg-slate-800 bg-slate-200 py-4 px-6 rounded-full">
         <div className="flex items-center gap-6">
           <button
