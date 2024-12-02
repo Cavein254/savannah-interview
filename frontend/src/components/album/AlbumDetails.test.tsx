@@ -39,12 +39,14 @@ describe("AlbumDetails Component", () => {
   })
 
   it("loads initial state", async () => {
+    // @ts-ignore
     ;(fetchAlbumById as vi.Mock).mockResolvedValueOnce(mockAlbumData)
     renderWithProviders(<AlbumDetails />)
     expect(screen.getByText("Loading ...")).toBeInTheDocument()
   })
 
   it("renders album details with title and images", async () => {
+    // @ts-ignore
     ;(fetchAlbumById as vi.Mock).mockResolvedValueOnce(mockAlbumData)
 
     renderWithProviders(<AlbumDetails />)
@@ -58,6 +60,7 @@ describe("AlbumDetails Component", () => {
   })
 
   it("updates the main photo when clicked", async () => {
+    // @ts-ignore
     ;(fetchAlbumById as vi.Mock).mockResolvedValueOnce(mockAlbumData)
 
     renderWithProviders(<AlbumDetails />)
