@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const getUsers = async () => {
   const response = await axios.get("/api/users")
-  return response.data
+  return response.data.data
 }
 
 export const getAlbums = async () => {
@@ -22,5 +22,10 @@ export const getCurrentUser = async () => {
 
 export const fetchAlbumById = async (id: string) => {
   const response = await axios.get(`/api/album/${id}`)
+  return response.data.data
+}
+
+export const fetchUserById = async (id: string) => {
+  const response = await axios.get(`/api/user/${id}`)
   return response.data.data
 }

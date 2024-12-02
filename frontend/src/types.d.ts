@@ -4,6 +4,7 @@ export type User = {
   username?: string
   email: string
   image?: string
+  albums?: Album
 }
 
 export type Album = {

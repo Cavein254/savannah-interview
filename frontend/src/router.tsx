@@ -7,6 +7,7 @@ import AlbumsPage from "./pages/Album"
 import PhotosPage from "./pages/Photo"
 import HomePage from "./pages/Home"
 import AlbumDetails from "./components/album/AlbumDetails"
+import UserDetails from "./components/user/UserDetails"
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <UsersPage />,
+      },
+      {
+        path: "/user/:id",
+        element: <UserDetails />,
       },
       {
         path: "/albums",

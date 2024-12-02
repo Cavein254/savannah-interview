@@ -2,6 +2,7 @@ import AlbumCard from "@/components/card/AlbumCard"
 import { useQueries } from "react-query"
 import { getAlbums, getUsers, getUsersAlbums } from "../services/api"
 import { Album } from "../types"
+import UserTable from "@/components/table/UserTable"
 
 const UsersPage = () => {
   const results = useQueries([
@@ -42,7 +43,9 @@ const UsersPage = () => {
         ))}
       </ul> */}
 
-      <div className="flex flex-col gap-2">{listalbums}</div>
+      <div className="flex flex-col gap-2">
+        <UserTable />
+      </div>
     </div>
   )
 }
