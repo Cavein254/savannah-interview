@@ -15,13 +15,12 @@ export const UserContext = createContext<UserContextProps>({
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | undefined>(undefined)
-  const { data, error } = useQuery("getUser", getCurrentUser)
+  const { data, error } = useQuery("getCurrentUser", getCurrentUser)
 
   useEffect(() => {
     if (data) {
       setUser(data)
     } else if (error) {
-      console.log(error)
       setUser(undefined)
     }
   }, [data, error])
