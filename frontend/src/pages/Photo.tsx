@@ -17,10 +17,12 @@ const PhotosPage = () => {
     </Suspense>
   ))
   return (
-    <div className="mt-[25%]">
+    <div className="mt-[25%] md:mt-[10%]">
       <GoBack />
       <h4 className="font-bold text-xl">All Photos</h4>
-      <div className="flex flex-col gap-2">{photosList}</div>
+      <div className="flex flex-col gap-2 md:flex-row md:flex-wrap justify-center">
+        {photosList}
+      </div>
       <BottomNav />
     </div>
   )
