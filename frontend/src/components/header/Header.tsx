@@ -1,16 +1,15 @@
-import { User } from "@/types"
 import { FaWheatAwn } from "react-icons/fa6"
 import { HiOutlineLockClosed } from "react-icons/hi2"
 import { Link, useLocation } from "react-router-dom"
 import HeaderDropdown from "../dropdown/HeaderDropdown"
 import { ModeToggle } from "../theme/mode-toggle"
 
+import { UserContext } from "@/context/usercontext"
+import { useContext, useEffect, useState } from "react"
+import { AiOutlinePicture } from "react-icons/ai"
 import { IoHomeOutline } from "react-icons/io5"
 import { MdOutlineLibraryMusic } from "react-icons/md"
-import { AiOutlinePicture } from "react-icons/ai"
 import SearchItem from "../search/SearchItem"
-import { useContext, useEffect, useState } from "react"
-import { UserContext } from "@/context/usercontext"
 
 const VITE_SERVER_LOGIN = import.meta.env.VITE_SERVER_LOGIN as string
 
