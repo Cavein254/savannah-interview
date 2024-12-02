@@ -5,6 +5,7 @@ import { Photo } from "@/types"
 import { useQuery } from "react-query"
 import { lazy, Suspense } from "react"
 import GoBack from "@/components/common/GoBack"
+import { ProtectedRoute } from "@/ProtectedRoute"
 const PhotoCard = lazy(() => import("@/components/card/PhotoCard"))
 
 const PhotosPage = () => {
@@ -17,14 +18,17 @@ const PhotosPage = () => {
     </Suspense>
   ))
   return (
-    <div className="mt-[25%] md:mt-[10%] lg:[7%]">
-      <GoBack />
-      <h4 className="font-bold text-xl">All Photos</h4>
-      <div className="flex flex-col gap-2 md:flex-row md:flex-wrap justify-center">
-        {photosList}
+    <>
+      <ProtectedRoute />
+      <div className="mt-[25%] md:mt-[10%] lg:[7%]">
+        <GoBack />
+        <h4 className="font-bold text-xl">All Photos</h4>
+        <div className="flex flex-col gap-2 md:flex-row md:flex-wrap justify-center">
+          {photosList}
+        </div>
+        <BottomNav />
       </div>
-      <BottomNav />
-    </div>
+    </>
   )
 }
 

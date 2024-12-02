@@ -8,6 +8,7 @@ import PhotosPage from "./pages/Photo"
 import AlbumDetails from "./components/album/AlbumDetails"
 import UserDetails from "./components/user/UserDetails"
 import PhotoDetails from "./components/photo/PhotoDetails"
+import Login from "./auth/Login"
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/users",

@@ -32,7 +32,9 @@ const UserTable = () => {
   ))
   return (
     <Table>
-      <TableCaption>A list of users and albums in the database</TableCaption>
+      <TableCaption className="font-bold">
+        A List of Users and Albums in the Database
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Name</TableHead>

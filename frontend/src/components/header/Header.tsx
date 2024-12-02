@@ -11,8 +11,6 @@ import { IoHomeOutline } from "react-icons/io5"
 import { MdOutlineLibraryMusic } from "react-icons/md"
 import SearchItem from "../search/SearchItem"
 
-const VITE_SERVER_LOGIN = import.meta.env.VITE_SERVER_LOGIN as string
-
 const Header = () => {
   const { user } = useContext(UserContext)
   const location = useLocation()
@@ -24,7 +22,7 @@ const Header = () => {
   return (
     <div className="fixed flex justify-between w-full items-center px-4 py-4 bg-slate-100 border-b-2 border-b-slate-300 shadow-md dark:bg-slate-800 dark:border-b-slate-700">
       <div>
-        <Link to="/users" className="flex gap-2">
+        <Link to="/" className="flex gap-2">
           <button className="md:hidden lg:flex">
             <FaWheatAwn size={24} />
           </button>
@@ -98,7 +96,7 @@ const Header = () => {
         {user ? (
           <HeaderDropdown image={user.image} />
         ) : (
-          <Link to={VITE_SERVER_LOGIN}>
+          <Link to="/login">
             <button>
               <HiOutlineLockClosed size={24} />
             </button>

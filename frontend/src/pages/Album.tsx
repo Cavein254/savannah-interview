@@ -3,6 +3,7 @@ import { useQuery } from "react-query"
 import { getAlbums } from "../services/api"
 import { Album } from "../types"
 import { lazy, Suspense } from "react"
+import { ProtectedRoute } from "@/ProtectedRoute"
 
 const AlbumCard = lazy(() => import("@/components/card/AlbumCard"))
 
@@ -16,13 +17,15 @@ const AlbumsPage = () => {
     </Suspense>
   ))
   return (
-    <div className="mt-[25%] md:mt-[10%] lg:mt-[7%]">
-      <h4 className="font-bold text-xl">All Albums</h4>
-      <div className="flex flex-col gap-2 md:flex-row md:flex-wrap justify-center">
-        {listalbums}
+    <ProtectedRoute>
+      <div className="mt-[25%] md:mt-[10%] lg:mt-[7%]">
+        <h4 className="font-bold text-xl">All Albums</h4>
+        <div className="flex flex-col gap-2 md:flex-row md:flex-wrap justify-center">
+          {listalbums}
+        </div>
+        <BottomNav />
       </div>
-      <BottomNav />
-    </div>
+    </ProtectedRoute>
   )
 }
 

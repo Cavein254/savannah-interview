@@ -2,6 +2,7 @@ import BottomNav from "@/components/bottom/BottomNav"
 import UserTable from "@/components/table/UserTable"
 import { useQueries } from "react-query"
 import { getAlbums, getUsers, getUsersAlbums } from "../services/api"
+import { ProtectedRoute } from "@/ProtectedRoute"
 
 const UsersPage = () => {
   const results = useQueries([
@@ -16,12 +17,14 @@ const UsersPage = () => {
     return <div>An error occured...</div>
 
   return (
-    <div className="mt-[25%] md:mt-[10%] lg:[7%]">
-      <div className="flex flex-col gap-2 md:px-4">
-        <UserTable />
+    <ProtectedRoute>
+      <div className="mt-[25%] md:mt-[10%] lg:[7%]">
+        <div className="flex flex-col gap-2 md:px-4">
+          <UserTable />
+        </div>
+        <BottomNav />
       </div>
-      <BottomNav />
-    </div>
+    </ProtectedRoute>
   )
 }
 
