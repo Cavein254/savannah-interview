@@ -6,7 +6,7 @@ import GoBack from "../common/GoBack"
 const UserDetails = () => {
   const { id } = useParams()
   const { data, isLoading, error } = useQuery(
-    ["UserDetails", id],
+    ["fetchUserById", id],
     () => fetchUserById(id!),
     {
       enabled: !!id,
@@ -16,7 +16,7 @@ const UserDetails = () => {
   if (error) return <div>An error occured...</div>
   console.log(data)
   return (
-    <div className="mt-[15%]">
+    <div className="mt-[25%]">
       <div className="">
         <GoBack />
       </div>

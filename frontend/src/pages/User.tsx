@@ -3,6 +3,7 @@ import { useQueries } from "react-query"
 import { getAlbums, getUsers, getUsersAlbums } from "../services/api"
 import { Album } from "../types"
 import UserTable from "@/components/table/UserTable"
+import BottomNav from "@/components/bottom/BottomNav"
 
 const UsersPage = () => {
   const results = useQueries([
@@ -46,6 +47,7 @@ const UsersPage = () => {
       <div className="flex flex-col gap-2">
         <UserTable />
       </div>
+      <BottomNav />
     </div>
   )
 }
