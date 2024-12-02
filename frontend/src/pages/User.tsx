@@ -18,7 +18,10 @@ const UsersPage = () => {
 
   return (
     <ProtectedRoute>
-      <div className="mt-[25%] md:mt-[10%] lg:[7%]">
+      <div className="mt-[20%] md:mt-[7%] lg:mt-[4%]">
+        <h4 className="font-bold text-xl">
+          Users and number of Albums in the Database
+        </h4>
         <div className="flex flex-col gap-2 md:px-4">
           <UserTable />
         </div>

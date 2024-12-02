@@ -18,7 +18,7 @@ const AlbumsPage = () => {
   ))
   return (
     <ProtectedRoute>
-      <div className="mt-[25%] md:mt-[10%] lg:mt-[7%]">
+      <div className="mt-[20%] md:mt-[7%] lg:mt-[4%]">
         <h4 className="font-bold text-xl">All Albums</h4>
         <div className="flex flex-col gap-2 md:flex-row md:flex-wrap justify-center">
           {listalbums}

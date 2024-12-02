@@ -2,7 +2,7 @@ import BottomNav from "@/components/bottom/BottomNav"
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className="mt-[20%] md:mt-[7%] lg:mt-[4%]">
       <BottomNav />
     </div>
   )
