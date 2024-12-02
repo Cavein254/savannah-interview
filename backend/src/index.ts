@@ -11,10 +11,11 @@ import { PrismaClient } from "@prisma/client";
 
 /** routes */
 import authRouter from "./routes/auth.routes";
+import apiRouter from "./routes/api.routes";
 
 dotenv.config().parsed;
 const app = express();
-app.use(cors());
+app.use(cors({ origin: ["http://localhost:5173"] }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -44,6 +45,7 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 app.use("/", authRouter);
+app.use("/api", apiRouter);
 
 const PORT = process.env.PORT || 4000;
 
