@@ -10,23 +10,25 @@ import {
 import { User } from "@/types"
 import { getUsers } from "@/services/api"
 import { useQuery } from "react-query"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const UserTable = () => {
+  const navigate = useNavigate()
   const { data, isLoading, error } = useQuery("getUsers", getUsers)
   if (isLoading) return <div>Loading ...</div>
   if (error) return <div>An error occured...</div>
+  const handleUserClick = (user: User) => {
+    return navigate(`/user/${user.id}`, { replace: false })
+  }
   const userInfo = data.map((user: User) => (
-    <Link to={`/user/${user.id}`}>
-      <TableRow key={user.id}>
-        <TableCell className="font-medium">{user.name}</TableCell>
-        <TableCell className="font-medium text-center">
-          {Array.isArray(user?.albums) ? user.albums.length : 0}
-        </TableCell>
-        <TableCell>{user.email}</TableCell>
-        <TableCell className="text-right">{user.username}</TableCell>
-      </TableRow>
-    </Link>
+    <TableRow key={user.id} onClick={() => handleUserClick(user)}>
+      <TableCell className="font-medium">{user.name}</TableCell>
+      <TableCell className="font-medium">
+        {Array.isArray(user?.albums) ? user.albums.length : 0}
+      </TableCell>
+      <TableCell>{user.email}</TableCell>
+      <TableCell className="text-right">{user.username}</TableCell>
+    </TableRow>
   ))
   return (
     <Table>
