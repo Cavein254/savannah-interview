@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 
 const BottomNav = () => {
   const navigate = useNavigate()
+  const url = window.location.href
+  const path = url.split("/")[3]
   const handleNavChange = (path: string) => {
     return navigate(`/${path}`, { replace: false })
   }
@@ -13,19 +15,19 @@ const BottomNav = () => {
       <div className="dark:bg-slate-800 bg-slate-200 py-4 px-6 rounded-full">
         <div className="flex items-center gap-6">
           <button
-            className="bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30"
+            className={`${path === "users" ? "scale-125" : ""} bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30}`}
             onClick={() => handleNavChange("users")}
           >
             <IoHomeOutline size={24} />
           </button>
           <button
-            className="bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30"
+            className={`${path === "albums" ? "scale-125" : ""} bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30}`}
             onClick={() => handleNavChange("albums")}
           >
             <MdOutlineLibraryMusic size={24} />
           </button>
           <button
-            className="bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30"
+            className={`${path === "photos" ? "scale-125" : ""} bg-slate-300 p-2 rounded-full hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-black hover:scale-125 transition-transform duration-30}`}
             onClick={() => handleNavChange("photos")}
           >
             <AiOutlinePicture size={24} />

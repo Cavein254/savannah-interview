@@ -1,9 +1,7 @@
-import AlbumCard from "@/components/card/AlbumCard"
+import BottomNav from "@/components/bottom/BottomNav"
+import UserTable from "@/components/table/UserTable"
 import { useQueries } from "react-query"
 import { getAlbums, getUsers, getUsersAlbums } from "../services/api"
-import { Album } from "../types"
-import UserTable from "@/components/table/UserTable"
-import BottomNav from "@/components/bottom/BottomNav"
 
 const UsersPage = () => {
   const results = useQueries([
@@ -16,9 +14,7 @@ const UsersPage = () => {
     return <div>Loading ...</div>
   if (users.error || albums.error || usersAlbums.error)
     return <div>An error occured...</div>
-  const listalbums = albums.data.map((album: Album) => (
-    <AlbumCard key={album.id} album={album} />
-  ))
+
   return (
     <div className="mt-[25%]">
       {/* <h1>Users</h1>
