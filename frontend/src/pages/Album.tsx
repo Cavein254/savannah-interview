@@ -2,6 +2,7 @@ import AlbumCard from "@/components/card/AlbumCard"
 import { useQueries } from "react-query"
 import { getAlbums, getUsers, getUsersAlbums } from "../services/api"
 import { Album } from "../types"
+import BottomNav from "@/components/bottom/BottomNav"
 
 const AlbumsPage = () => {
   const results = useQueries([
@@ -20,6 +21,7 @@ const AlbumsPage = () => {
   return (
     <div className="mt-[25%]">
       <div className="flex flex-col gap-2">{listalbums}</div>
+      <BottomNav />
     </div>
   )
 }
