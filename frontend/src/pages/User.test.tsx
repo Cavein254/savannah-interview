@@ -27,6 +27,7 @@ type MockUseQueriesReturn = [
 
 describe("UsersPage Component", () => {
   it("renders loading state when queries are loading", () => {
+    // @ts-ignore
     useQueries.mockReturnValue([
       { isLoading: true, error: null },
       { isLoading: true, error: null },
@@ -38,6 +39,7 @@ describe("UsersPage Component", () => {
   })
 
   it("renders error state when queries return an error", () => {
+    // @ts-ignore
     useQueries.mockReturnValue([
       { isLoading: false, error: new Error("Error fetching users") },
       { isLoading: false, error: null },
@@ -48,6 +50,7 @@ describe("UsersPage Component", () => {
   })
 
   it("renders successfully when queries return data", async () => {
+    // @ts-ignore
     useQueries.mockReturnValue([
       { isLoading: false, error: null, data: [] },
       { isLoading: false, error: null, data: [] },

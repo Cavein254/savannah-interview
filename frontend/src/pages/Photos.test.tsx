@@ -28,6 +28,7 @@ vi.mock("@/components/card/PhotoCard", () => ({
 
 describe("PhotosPage Component", () => {
   it("renders loading state when query is loading", () => {
+    // @ts-ignore
     useQuery.mockReturnValue({
       isLoading: true,
       error: null,
@@ -38,6 +39,7 @@ describe("PhotosPage Component", () => {
   })
 
   it("renders error state when query returns an error", () => {
+    // @ts-ignore
     useQuery.mockReturnValue({
       isLoading: false,
       error: new Error("Error fetching photos"),
@@ -52,6 +54,7 @@ describe("PhotosPage Component", () => {
       { id: 1, title: "Photo 1" },
       { id: 2, title: "Photo 2" },
     ]
+    // @ts-ignore
     useQuery.mockReturnValue({
       isLoading: false,
       error: null,

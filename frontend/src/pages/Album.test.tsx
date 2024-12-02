@@ -24,6 +24,7 @@ vi.mock("@/components/card/AlbumCard", () => ({
 
 describe("AlbumsPage Component", () => {
   it("renders loading state when query is loading", () => {
+    // @ts-ignore
     useQuery.mockReturnValue({
       isLoading: true,
       error: null,
@@ -34,6 +35,7 @@ describe("AlbumsPage Component", () => {
   })
 
   it("renders error state when query returns an error", () => {
+    // @ts-ignore
     useQuery.mockReturnValue({
       isLoading: false,
       error: new Error("Error fetching albums"),
@@ -48,6 +50,7 @@ describe("AlbumsPage Component", () => {
       { id: 1, title: "Album 1" },
       { id: 2, title: "Album 2" },
     ]
+    // @ts-ignore
     useQuery.mockReturnValue({
       isLoading: false,
       error: null,
