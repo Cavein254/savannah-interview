@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id        String   @id @default(uuid()) @map("_id")
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  username      String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  newUser       Boolean   @default(true)
+
+  albums Album[]
+}
+
+model Album {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId String? @db.ObjectId
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title  String
+  photos Photo[]
+}
+
+model Photo {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  albumId  String? @db.ObjectId
+  album    Album?  @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  title    String
+  imageUrl String
+}
