@@ -7,6 +7,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Avator from "../avator/Avator"
+import { Link } from "react-router-dom"
+
+const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL as string
 
 const HeaderDropdown = ({ image }: { image: string | undefined }) => {
   return (
@@ -20,7 +23,9 @@ const HeaderDropdown = ({ image }: { image: string | undefined }) => {
           <DropdownMenuSeparator />
           <DropdownMenuItem>My Albums</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link to={`${VITE_SERVER_URL}/api/logout`}>Logout</Link>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

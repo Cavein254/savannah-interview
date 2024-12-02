@@ -16,7 +16,7 @@ const AlbumsPage = () => {
     </Suspense>
   ))
   return (
-    <div className="mt-[25%] md:mt-[10%]">
+    <div className="mt-[25%] md:mt-[10%] lg:mt-[7%]">
       <h4 className="font-bold text-xl">All Albums</h4>
       <div className="flex flex-col gap-2 md:flex-row md:flex-wrap justify-center">
         {listalbums}
